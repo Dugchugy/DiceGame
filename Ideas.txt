@@ -1,1 +1,11 @@
 game about needing to roll a dice to a goal?
+
+Idle game where buildings and upgrades are random (2/5)
+
+Town building game but what's built in the town is random and as a result, exports could be anything (2/5)
+
+A game where you roll a dice. The number determines... something, maybe a level clear condition like grab 1-6 coins or something (3/5)
+
+A Mario Party like dungeon crawler where the player and the enemies each roll a dice that determines the number of tiles they can move (4/5)
+
+A game where the roll of a dice determines the environment the player is in. A new dice is rolled every so often to keep the player on their toes. I don't know what type of game this would be (4/5)
