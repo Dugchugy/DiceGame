@@ -12,3 +12,11 @@ A game where the roll of a dice determines the environment the player is in. A n
 	=> choose which rolls ditate which parts of the environment?
 	=> add the custom clear condition from idea #4 (the environments could then change on that condition)
 
+player is dice (move based off number directions)
+
+Area type:
+Goals:
+# of rooms:
+
+
+
