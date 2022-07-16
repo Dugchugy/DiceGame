@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class MapGenerationScript : MonoBehaviour
 {
+
+    public GameObject[] RoomTemplates = new GameObject[8];
+
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 0; i < 8; i++){
+            RoomTemplates[i] = Resources.Load<GameObject>("Room/Room " + i);
+        }
 
+        GenerateMap(6, 2);
     }
 
     // Update is called once per frame
@@ -55,10 +62,15 @@ public class MapGenerationScript : MonoBehaviour
 
             Rooms[i] = new RoomHolder(Random.Range(0,6));
 
-            Rooms[i].neighbourIndexs[(side - 2) % 4] = CurrentRoom;
+            Debug.Log(Rooms[i].neighbourIndexs.Length);
+            Debug.Log((side - 2) % 4);
+
+            Rooms[i].neighbourIndexs[(side + 6) % 4] = CurrentRoom;
             Rooms[CurrentRoom].neighbourIndexs[side] = side;
 
         }
+
+        LoadRoom(Rooms[0]);
     }
 
     private bool checkDoors(RoomHolder r){
@@ -69,5 +81,10 @@ public class MapGenerationScript : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void LoadRoom(RoomHolder r){
+        GameObject rum = Instantiate(RoomTemplates[r.roomType]);
+        rum.transform.position = r.position;
     }
 }
