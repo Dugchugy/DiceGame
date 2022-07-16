@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dice
+  - Variant
+  - Goal
+  - Room1
+  - Room2
+  - Room3
   layers:
   - Default
   - TransparentFX
