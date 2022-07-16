@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Tile1
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 21300000, guid: e9c441b53736fa04e960a8aaba7eb11e, type: 3}
+  - {fileID: 21300000, guid: c7aa42e73254e71478fa4739effce467, type: 3}
+  - {fileID: 21300000, guid: dd23c609849dfde4ca0d583a58cf779f, type: 3}
+  - {fileID: 21300000, guid: 3192c3548daad0c4ea0c4f08f722a258, type: 3}
+  - {fileID: 21300000, guid: 333d36943c9759749a313dcd4dfbc760, type: 3}
+  - {fileID: 21300000, guid: 9e6ccd9145787434b89dee2f56b2e3db, type: 3}
+  - {fileID: 21300000, guid: 2face60716928b249a0c1abaab419227, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
