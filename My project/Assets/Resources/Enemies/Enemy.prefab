@@ -103,6 +103,7 @@ MonoBehaviour:
   chaseSpeed: 3
   reloadTime: 2
   idleSpeed: 0.2
+  maxIdleSpeed: 0.8
 --- !u!50 &3823237416751348399
 Rigidbody2D:
   serializedVersion: 4

@@ -51,8 +51,10 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D c){
-        LoadData.Score += 50;
+        if(c.gameObject.tag == "Bullet"){
+            LoadData.Score += 50;
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
