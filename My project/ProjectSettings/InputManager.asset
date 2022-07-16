@@ -38,11 +38,11 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: FireY
+    m_Name: Fire1
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
+    negativeButton: 
+    positiveButton: left ctrl
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000
@@ -51,14 +51,14 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-    axis: 1
+    axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: FireX
+    m_Name: Fire2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
+    negativeButton: 
+    positiveButton: left alt
     altNegativeButton: 
     altPositiveButton: mouse 1
     gravity: 1000
@@ -499,6 +499,6 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-    axis: 27
+    axis: 5
     joyNum: 0
   m_UsePhysicalKeys: 0
