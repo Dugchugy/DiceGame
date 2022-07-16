@@ -63,6 +63,7 @@ public class DiceScript : MonoBehaviour
             }else{
                 if(Dragging){
                     compliment.MouseCanDrag = true;
+                    body.velocity = Vector2.zero;
                 }
                 Dragging = false;
             }
@@ -74,7 +75,6 @@ public class DiceScript : MonoBehaviour
 
                 body.velocity = vel;
             }else{
-                body.velocity = Vector2.zero;
             }
         }
     }
