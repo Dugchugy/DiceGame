@@ -63,10 +63,12 @@ public class PlayerCharacter : MonoBehaviour
             GameObject newShot = GameObject.Instantiate(PlayerShot);
             Rigidbody2D shotBody = newShot.GetComponent<Rigidbody2D>();
 
-            newShot.transform.position = transform.position;
+            Vector2 direction = (Vector2)(((transform.right*shotx) + (transform.up*shoty)).normalized);
+
+            newShot.transform.position = (Vector2) transform.position + (direction * 0.9f);
             newShot.transform.rotation = transform.rotation;
 
-            shotBody.velocity = (Vector2)(((transform.right*shotx) + (transform.up*shoty)).normalized * shotSpeed);
+            shotBody.velocity = direction * shotSpeed;
         }
     }
 }

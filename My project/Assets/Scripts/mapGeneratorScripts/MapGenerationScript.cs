@@ -9,10 +9,26 @@ public class MapGenerationScript : MonoBehaviour
 
     private GameObject[] RoomTemplates = new GameObject[9];
 
+    private GameObject EnemyTemplate;
+
     public Vector3[] DirectionVectors = new Vector3[] {new Vector3(0, 10, 0),
                                                        new Vector3(12, 0, 0),
                                                        new Vector3(0, -10, 0),
                                                        new Vector3(-12, 0, 0)};
+
+    public int[] EnemyNums = new int[] {2, 4, 2, 1, 4, 5, 0, 0, 0};
+
+    public Vector3[][] EnemyPos = new Vector3[9][]{
+        new Vector3[] {new Vector3(-3.5f, -2.5f, 0), new Vector3(3.5f, 2.5f, 0)},
+        new Vector3[] {new Vector3(-3.5f, -2.5f, 0), new Vector3(3.5f, -2.5f, 0), new Vector3(-3.5f, 2.5f, 0), new Vector3(3.5f, 2.5f, 0)},
+        new Vector3[] {new Vector3(-3.5f, 0.5f, 0), new Vector3(3.5f, 0.5f, 0)},
+        new Vector3[] {new Vector3(0.5f, 0.5f, 0)},
+        new Vector3[] {new Vector3(-4.5f, -3.5f, 0), new Vector3(4.5f, -3.5f, 0), new Vector3(-4.5f, 3.5f, 0), new Vector3(4.5f, 3.5f, 0)},
+        new Vector3[] {new Vector3(-4.5f, -3.5f, 0), new Vector3(4.5f, -3.5f, 0), new Vector3(-4.5f, 3.5f, 0), new Vector3(4.5f, 3.5f, 0), new Vector3(-0.5f, 0.5f, 0)},
+        new Vector3[0],
+        new Vector3[0],
+        new Vector3[0]
+    };
 
     public float TimePassed = 0;
     public float MaxTime = 60;
@@ -28,6 +44,8 @@ public class MapGenerationScript : MonoBehaviour
         for(int i = 0; i < 9; i++){
             RoomTemplates[i] = Resources.Load<GameObject>("Room/Room " + i);
         }
+
+        EnemyTemplate = Resources.Load<GameObject>("Enemies/Enemy");
 
         GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
 
@@ -52,10 +70,10 @@ public class MapGenerationScript : MonoBehaviour
         if(TimePassed > (MaxTime / 4) * 3){
             CycleTime += Time.deltaTime;
 
-            if(CycleTime > 0.25f){
-                text.color = new Color(1, 1, 1, 1);
-            }else if(CycleTime > 0.5f){
+            if(CycleTime > 0.5f){
                 CycleTime = 0;
+            }else if(CycleTime > 0.25f){
+                text.color = new Color(1, 1, 1, 1);
             }else{
                 text.color = new Color(0.9f, 0, 0, 1);
             }
@@ -203,6 +221,13 @@ public class MapGenerationScript : MonoBehaviour
 
         //sets the room to be a child of the MapOrigin object
         rum.transform.parent = transform;
+
+        //spawns the enemies for the room
+        for(int i = 0; i < EnemyNums[r.roomType]; i++){
+            GameObject en = Instantiate(EnemyTemplate);
+
+            en.transform.position = r.position + EnemyPos[r.roomType][i];
+        }
     }
 
     private bool isOccupied(List<RoomHolder> Rooms, int CurrentRoom, int i, int side){
