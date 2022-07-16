@@ -12,6 +12,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public float idleSpeed = 0.2f;
 
+    public float maxIdleSpeed = 0.8f;
+
     private GameObject PlayerCharacter;
 
     private Rigidbody2D body;
@@ -38,7 +40,13 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
-            body.velocity += (new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized) * idleSpeed;
+            if(body.velocity.magnitude > maxIdleSpeed){
+
+
+                body.velocity += body.velocity.normalized * -1 * (body.velocity.magnitude - maxIdleSpeed);
+            }else{
+                body.velocity += (new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized) * idleSpeed;
+            }
         }
     }
 }

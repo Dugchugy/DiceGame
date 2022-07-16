@@ -19,6 +19,8 @@ public class MapGenerationScript : MonoBehaviour
 
     private TMP_Text text;
 
+    private float CycleTime = 0;
+
     public int goalFound = 0;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +50,15 @@ public class MapGenerationScript : MonoBehaviour
         text.SetText((MaxTime - TimePassed).ToString("n2") + "s");
 
         if(TimePassed > (MaxTime / 4) * 3){
-            text.color = new Color(0.8f, 0, 0, 1);
+            CycleTime += Time.deltaTime;
+
+            if(CycleTime > 0.25f){
+                text.color = new Color(1, 1, 1, 1);
+            }else if(CycleTime > 0.5f){
+                CycleTime = 0;
+            }else{
+                text.color = new Color(0.9f, 0, 0, 1);
+            }
         }
     }
 

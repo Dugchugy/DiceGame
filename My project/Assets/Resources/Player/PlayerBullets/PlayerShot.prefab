@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 661151612484932690}
   - component: {fileID: 1473767441558994681}
   - component: {fileID: 1890850300235369992}
+  - component: {fileID: 7148063376373528755}
   m_Layer: 0
   m_Name: PlayerShot
   m_TagString: Untagged
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1890850300235369992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +122,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 7
   originalPosition: {x: 0, y: 0, z: 0}
+--- !u!70 &7148063376373528755
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661151612484932691}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 0.5000001}
+  m_Direction: 0
