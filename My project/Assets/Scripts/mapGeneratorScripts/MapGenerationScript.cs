@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MapGenerationScript : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class MapGenerationScript : MonoBehaviour
                                                        new Vector3(0, -10, 0),
                                                        new Vector3(-12, 0, 0)};
 
+    public float TimePassed = 0;
+    public float MaxTime = 60;
+
+    private TMP_Text text;
+
+    public int goalFound = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +28,24 @@ public class MapGenerationScript : MonoBehaviour
         }
 
         GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
+
+        text = GameObject.Find("TimeRemaining").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        TimePassed += Time.deltaTime;
 
+        if(TimePassed > MaxTime){
+            if(goalFound >= LoadData.GoalCount){
+                SceneManager.LoadScene(0);
+            }else{
+                SceneManager.LoadScene(2);
+            }
+        }
+
+        text.SetText((MaxTime - TimePassed) + "s" );
     }
 
     /*
@@ -41,15 +61,11 @@ public class MapGenerationScript : MonoBehaviour
         //creates an array to hold the rooms to generate
         List<RoomHolder> Rooms = new List<RoomHolder>();
 
-        Debug.Log("listed");
-
         //generates the starting room as room 0
         Rooms.Add(new RoomHolder(6, Vector3.zero));
 
         //loops for each of the rooms to generate
         for(int i = 1; i <= (rnum + goals); i++){
-
-            Debug.Log("loop " + i);
 
             //picks a room to build the new room off of
             int CurrentRoom = Random.Range(0, i);
