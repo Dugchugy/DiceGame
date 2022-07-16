@@ -30,7 +30,7 @@ public class MapGenerationScript : MonoBehaviour
         RoomHolder[] Rooms = new RoomHolder[1 + rnum + goals];
 
         //generates the starting room as room 0
-        Rooms[0] = new RoomHolder(6);
+        Rooms[0] = new RoomHolder(6, new int[0]);
 
         //loops for each of the rooms to generate
         for(int i = 1; i <= rnum; i++){
