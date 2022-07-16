@@ -30,6 +30,7 @@ public class DiceScript : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
 
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        compliment = cam.gameObject.GetComponent<DiceCompliment>();
     }
 
     // Update is called once per frame
@@ -54,11 +55,15 @@ public class DiceScript : MonoBehaviour
             if(Input.GetMouseButton(0))
             {
 
-                if(Collider.OverlapPoint(MousePos))
+                if(Collider.OverlapPoint(MousePos) && compliment.MouseCanDrag)
                 {
                     Dragging = true;
+                    compliment.MouseCanDrag = false;
                 }
             }else{
+                if(Dragging){
+                    compliment.MouseCanDrag = true;
+                }
                 Dragging = false;
             }
 
