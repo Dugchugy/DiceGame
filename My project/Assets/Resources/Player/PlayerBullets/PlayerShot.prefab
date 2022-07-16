@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 661151612484932653}
   - component: {fileID: 661151612484932690}
   - component: {fileID: 1473767441558994681}
+  - component: {fileID: 1890850300235369992}
   m_Layer: 0
   m_Name: PlayerShot
   m_TagString: Untagged
@@ -106,3 +107,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1890850300235369992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661151612484932691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dc91abd92496249ba4f56dfc30afc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 7
+  originalPosition: {x: 0, y: 0, z: 0}
