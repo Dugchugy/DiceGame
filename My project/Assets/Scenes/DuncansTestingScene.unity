@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110483493}
   - component: {fileID: 1110483494}
+  - component: {fileID: 1110483495}
   m_Layer: 0
   m_Name: MapOrigin
   m_TagString: Untagged
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1110483492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3891b19a4cc736d4daf2452dd66e6343, type: 3}
+  m_Script: {fileID: 11500000, guid: e77287c0950c2374fad62638444a499e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RoomTemplates:
@@ -176,6 +177,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!156049354 &1110483495
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110483492}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &1507278470
 GameObject:
   m_ObjectHideFlags: 0
