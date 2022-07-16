@@ -9,10 +9,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dice
   - Water
   - UI
-  - 
+  - Dice Holder
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Dice
+    uniqueID: 3445469335
+    locked: 0
+  - name: Dice Holder
+    uniqueID: 2426779165
     locked: 0
