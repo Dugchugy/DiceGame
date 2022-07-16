@@ -10,6 +10,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public float reloadTime = 2;
 
+    public float idleSpeed = 0.2f;
+
     private GameObject PlayerCharacter;
 
     private Rigidbody2D body;
@@ -36,7 +38,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
-            body.velocity = new Vector3(random.range(-1.0f, 1.0f), random.range(-1.0f, 1.0f), random.range(-1.0f, 1.0f).normalized );
+            body.velocity += (new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized) * idleSpeed;
         }
     }
 }
