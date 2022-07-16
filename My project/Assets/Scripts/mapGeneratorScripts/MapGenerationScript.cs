@@ -45,7 +45,11 @@ public class MapGenerationScript : MonoBehaviour
             }
         }
 
-        text.SetText((MaxTime - TimePassed) + "s" );
+        text.SetText((MaxTime - TimePassed).ToString("n2") + "s");
+
+        if(TimePassed > (MaxTime / 4) * 3){
+            text.color = new Color(0.8f, 0, 0, 1);
+        }
     }
 
     /*
