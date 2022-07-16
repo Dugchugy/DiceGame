@@ -104,6 +104,42 @@ public class MapGenerationScript : MonoBehaviour
 
         }
 
+        for(int doub = 0; doub < 2; doub++){
+
+            //counts the number of rooms to generate
+            int roomC = Rooms.Count;
+
+            for(int i = 0; i < roomC; i++){
+                for(int j = 0; j < 4; j++){
+                    if(Rooms[i].neighbourIndexs[j] == -1){
+
+                        Vector3 newPos = Rooms[i].position + DirectionVectors[j];
+
+                        Rooms.Add(new RoomHolder(8, newPos));
+
+                        //loops for each side of the room
+                        for(int k = 0; k < 4; k++){
+                            //the position to test for an exsisting room
+                            Vector3 testPos = newPos + DirectionVectors[k];
+
+                            //attempts to find a room at the test position
+                            int index = contactIndex(Rooms, Rooms.Count, testPos);
+
+                            //checks if a room was found
+                            if(index != -1){
+
+                                //pairs the current room with its found neighbour
+                                Rooms[Rooms.Count - 1].neighbourIndexs[k] = index;
+                                Rooms[index].neighbourIndexs[(k + 6) % 4] = (Rooms.Count - 1);
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }
+
         //counts the number of rooms to generate
         int roomLen = Rooms.Count;
 
