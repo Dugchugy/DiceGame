@@ -10,19 +10,27 @@ public class DiceScript : MonoBehaviour
     public Animator Anim;
     public float Delay = 0;
     public double MaxDelay = 0.1;
-    public bool CanMove;
     public bool Dragging;
     public Collider2D Collider;
     public Camera cam;
+
+    public float sensitivity = 35.0f;
+
+    private Rigidbody2D body;
+    private DiceCompliment compliment;
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
         Collider = GetComponent<Collider2D>();
-        CanMove = false;
         Dragging = false;
         RollTime = 50;
+
+        body = GetComponent<Rigidbody2D>();
+
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        compliment = cam.gameObject.GetComponent<DiceCompliment>();
     }
 
     // Update is called once per frame
@@ -41,16 +49,32 @@ public class DiceScript : MonoBehaviour
         }
         else
         {
+            Vector3 SMPos = Input.mousePosition;
+            Vector3 MousePos = cam.ScreenToWorldPoint(SMPos);
+
             if(Input.GetMouseButton(0))
             {
-                Vector3 SMPos = Input.mousePosition;
-                Vector3 MousePos = cam.ScreenToWorldPoint(SMPos);
 
-                if(Collider.OverlapPoint(MousePos))
+                if(Collider.OverlapPoint(MousePos) && compliment.MouseCanDrag)
                 {
-                    MousePos.z = 0;
-                    transform.position = MousePos;
+                    Dragging = true;
+                    compliment.MouseCanDrag = false;
                 }
+            }else{
+                if(Dragging){
+                    compliment.MouseCanDrag = true;
+                }
+                Dragging = false;
+            }
+
+            if(Dragging){
+                MousePos.z = 0;
+
+                Vector2 vel = (MousePos - transform.position) * sensitivity;
+
+                body.velocity = vel;
+            }else{
+                body.velocity = Vector2.zero;
             }
         }
     }

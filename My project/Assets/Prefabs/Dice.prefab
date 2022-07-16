@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8450955557615641790}
   m_Layer: 0
   m_Name: Dice
-  m_TagString: Untagged
+  m_TagString: Dice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,10 +105,10 @@ MonoBehaviour:
   Anim: {fileID: 0}
   Delay: 0
   MaxDelay: 0.1
-  CanMove: 0
   Dragging: 0
   Collider: {fileID: 0}
   cam: {fileID: 0}
+  sensitivity: 35
 --- !u!95 &8817501197888053396
 Animator:
   serializedVersion: 4
@@ -172,7 +172,7 @@ Rigidbody2D:
   m_AngularDrag: 100
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
