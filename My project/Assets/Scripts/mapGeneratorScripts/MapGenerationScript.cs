@@ -19,7 +19,7 @@ public class MapGenerationScript : MonoBehaviour
             RoomTemplates[i] = Resources.Load<GameObject>("Room/Room " + i);
         }
 
-        GenerateMap(18, 6);
+        GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
     }
 
     // Update is called once per frame
