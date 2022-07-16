@@ -8,7 +8,8 @@ public class HolderScript : MonoBehaviour
     public Collider2D HolderCollider;
     private GameObject[] Die;
     public bool Snapped = false;
-    public int HolderNum = -1;
+    private int HolderNum = -1;
+    public int heldNum = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,10 @@ public class HolderScript : MonoBehaviour
             {
                 Die[i].transform.position = transform.position;
                 Snapped = true;
+                HolderNum = i;
+                heldNum = Die[i].GetComponent<DiceScript>().DiceNum;
             }
+            /*
             if(!Die[i].GetComponent<Collider2D>().OverlapPoint(CP) && Snapped == true)
             {
                 Snapped = false;
@@ -38,6 +42,20 @@ public class HolderScript : MonoBehaviour
             {
                 HolderNum = Die[i].GetComponent<DiceScript>().DiceNum;
             }
+            */
+        }
+
+        if(Snapped){
+            Vector2 CP = HolderCollider.ClosestPoint(Die[HolderNum].transform.position);
+            if(!(Die[HolderNum].GetComponent<Collider2D>().OverlapPoint(CP))){
+                Snapped = false;
+                HolderNum = -1;
+                heldNum = -1;
+            }else{
+                Die[HolderNum].transform.position = transform.position;
+            }
+
+
         }
     }
 }
