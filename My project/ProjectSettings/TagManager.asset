@@ -10,6 +10,7 @@ TagManager:
   - Room1
   - Room2
   - Room3
+  - Bullet
   layers:
   - Default
   - TransparentFX

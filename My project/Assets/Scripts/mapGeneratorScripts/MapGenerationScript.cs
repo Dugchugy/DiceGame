@@ -37,6 +37,8 @@ public class MapGenerationScript : MonoBehaviour
 
     private float CycleTime = 0;
 
+    public int varient = 0;
+
     public int goalFound = 0;
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,8 @@ public class MapGenerationScript : MonoBehaviour
         }
 
         EnemyTemplate = Resources.Load<GameObject>("Enemies/Enemy");
+
+        varient = LoadData.RoomType;
 
         GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
 
@@ -224,8 +228,10 @@ public class MapGenerationScript : MonoBehaviour
 
         //spawns the enemies for the room
         for(int i = 0; i < EnemyNums[r.roomType]; i++){
+            //creates a new enemy
             GameObject en = Instantiate(EnemyTemplate);
 
+            //moves it to the desired position
             en.transform.position = r.position + EnemyPos[r.roomType][i];
         }
     }

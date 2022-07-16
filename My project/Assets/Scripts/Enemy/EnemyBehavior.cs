@@ -14,6 +14,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public float maxIdleSpeed = 0.8f;
 
+    public int health  = 4;
+
     private GameObject PlayerCharacter;
 
     private Rigidbody2D body;
@@ -52,9 +54,14 @@ public class EnemyBehavior : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c){
         if(c.gameObject.tag == "Bullet"){
-            LoadData.Score += 50;
+            health --;
 
-            Destroy(gameObject);
+            if(health < 1){
+
+                LoadData.Score += 50;
+
+                Destroy(gameObject);
+            }
         }
     }
 }
