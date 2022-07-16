@@ -13,7 +13,7 @@ public class LostMenu : MonoBehaviour
         text.SetText("Score: " + LoadData.Score);
     }
 
-    void ReplayButton(){
+    public void ReplayButton(){
 
         LoadData.Score = 0;
 
