@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomHolder : MonoBehaviour
+public class RoomHolder
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int roomType;
+    public int[] neighbourIndexs = new int[] {-1, -1, -1, -1};
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public int[] position = new int{0, 0};
+
+    public RoomHolder(int type, int[] pos){
+        roomType = type;
+        position = pos;
     }
 }
