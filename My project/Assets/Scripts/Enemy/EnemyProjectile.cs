@@ -12,6 +12,10 @@ public class EnemyProjectile : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody2D>().velocity = shotDirection.normalized * Speed;
+
+        float angle = (Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg) + 180;
+
+        transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
     void OnCollisionEnter2D(Collision2D c){
