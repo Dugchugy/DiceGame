@@ -24,6 +24,10 @@ public class PlayerCharacter : MonoBehaviour
     private GameObject PlayerShot;
     private GameObject PlayerGun;
 
+    private Animator anim;
+
+    public float StunTime = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,8 @@ public class PlayerCharacter : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
 
         playerBody = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
 
         PlayerShot = Resources.Load<GameObject>("Player/PlayerBullets/PlayerShot");
     }
@@ -46,10 +52,15 @@ public class PlayerCharacter : MonoBehaviour
 
         float rotateInput = Input.GetAxis("Rotation");
 
-        Vector3 currentVelocity = (transform.up * y) + (transform.right * x);
+        if(StunTime <= 0){
 
-        playerBody.velocity = ((new Vector2(currentVelocity.x, currentVelocity.y)).normalized * movementSpeed);
-        transform.eulerAngles += new Vector3(0, 0, rotateSpeed * rotateInput);
+            Vector3 currentVelocity = (transform.up * y) + (transform.right * x);
+
+            playerBody.velocity = ((new Vector2(currentVelocity.x, currentVelocity.y)).normalized * movementSpeed);
+            transform.eulerAngles += new Vector3(0, 0, rotateSpeed * rotateInput);
+        }else{
+            StunTime -= Time.fixedDeltaTime;
+        }
 
         shotTime += Time.fixedDeltaTime;
 
@@ -69,6 +80,12 @@ public class PlayerCharacter : MonoBehaviour
             newShot.transform.rotation = transform.rotation;
 
             shotBody.velocity = direction * shotSpeed;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D c){
+        if(c.gameObject.tag == "EnemyProjectile"){
+            StunTime = 0.25f;
         }
     }
 }
