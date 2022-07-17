@@ -11,6 +11,7 @@ TagManager:
   - Room2
   - Room3
   - Bullet
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
