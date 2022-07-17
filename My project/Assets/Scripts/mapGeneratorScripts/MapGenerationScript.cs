@@ -240,7 +240,7 @@ public class MapGenerationScript : MonoBehaviour
 
                 if(tilemap.GetTile(tilepos) == WallTemplate){
                     tilemap.SetTile(tilepos, WallTiles[varient]);
-                }else{
+                }else if(tilemap.GetTile(tilepos) != null){
                     tilemap.SetTile(tilepos, GroundTiles[varient]);
                 }
             }

@@ -30,11 +30,18 @@ public class LevelScript : MonoBehaviour
         Rooms2 = 0;
         Rooms3 = 0;
         TotalRooms = 0;
+
+        Words = GameObject.Find("Error Message").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        ButtonDelay += Time.deltaTime;
+
+        if(ButtonDelay > 2){
+            Words.color = new Color(1, 0, 0, 0);
+        }
 
     }
 
@@ -51,17 +58,11 @@ public class LevelScript : MonoBehaviour
         Rooms1 = RoomHolder1.GetComponent<HolderScript>().heldNum;
         Rooms2 = RoomHolder2.GetComponent<HolderScript>().heldNum;
         Rooms3 = RoomHolder3.GetComponent<HolderScript>().heldNum;
-        Words = GameObject.Find("Error Message").GetComponent<TMP_Text>();
 
         if(Variation == -1 || Goals == -1 || Rooms1 == -1 || Rooms2 == -1 || Rooms3 == -1)
         {
             ButtonDelay = 0;
             Words.color = new Color(1, 0, 0, 1);
-            while(ButtonDelay < 2)
-            {
-                ButtonDelay += Time.deltaTime;
-            }
-            Words.color = new Color(1, 0, 0, 0);
         }
         else
         {
