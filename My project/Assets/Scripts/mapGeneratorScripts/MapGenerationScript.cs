@@ -19,6 +19,8 @@ public class MapGenerationScript : MonoBehaviour
 
     public Tile[] GroundTiles;
 
+    private GameObject GoalTemplate;
+
     public Tile[] WallTiles;
 
     public Tile WallTemplate;
@@ -46,7 +48,7 @@ public class MapGenerationScript : MonoBehaviour
 
     public int varient = 0;
 
-    public int goalFound = 0;
+    //public int goalFound = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +58,11 @@ public class MapGenerationScript : MonoBehaviour
 
         EnemyTemplate = Resources.Load<GameObject>("Enemies/Enemy");
 
+        GoalTemplate = Resources.Load<GameObject>("Player/Goal Item");
+
         varient = LoadData.RoomType - 1;
+
+        LoadData.Goalsfound = 0;
 
         GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
 
@@ -69,7 +75,7 @@ public class MapGenerationScript : MonoBehaviour
         TimePassed += Time.deltaTime;
 
         if(TimePassed > MaxTime){
-            if(goalFound >= LoadData.GoalCount){
+            if(LoadData.Goalsfound >= LoadData.GoalCount){
                 SceneManager.LoadScene(0);
             }else{
                 SceneManager.LoadScene(2);
@@ -260,6 +266,13 @@ public class MapGenerationScript : MonoBehaviour
 
             //moves it to the desired position
             en.transform.position = r.position + EnemyPos[r.roomType][i];
+        }
+
+        if(r.roomType == 7){
+
+            GameObject g = Instantiate(GoalTemplate);
+
+            g.transform.position = r.position;
         }
     }
 
