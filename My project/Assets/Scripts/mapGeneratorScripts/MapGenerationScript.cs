@@ -76,7 +76,7 @@ public class MapGenerationScript : MonoBehaviour
 
         if(TimePassed > MaxTime){
             if(LoadData.Goalsfound >= LoadData.GoalCount){
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(3);
             }else{
                 SceneManager.LoadScene(2);
             }
