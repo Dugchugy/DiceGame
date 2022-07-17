@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1288295108737994509}
   - component: {fileID: 1288295108737994510}
-  - component: {fileID: 1288295108737994511}
+  - component: {fileID: 1959290927714481040}
   m_Layer: 0
   m_Name: MapOrigin
   m_TagString: Untagged
@@ -52,10 +52,27 @@ MonoBehaviour:
   - {x: 12, y: 0, z: 0}
   - {x: 0, y: -10, z: 0}
   - {x: -12, y: 0, z: 0}
+  GroundTiles:
+  - {fileID: 11400000, guid: 24051e7d2349e704aaa8130f379b5300, type: 2}
+  - {fileID: 11400000, guid: 482e0536e02f5434287471a98c85343c, type: 2}
+  - {fileID: 11400000, guid: 6294c52466ca66f47a65ce8451631314, type: 2}
+  - {fileID: 11400000, guid: d9e191397209b3e45ae8563aaccd345b, type: 2}
+  - {fileID: 11400000, guid: 3d63152ee1c8fdb4b8b0e11cb264a345, type: 2}
+  - {fileID: 11400000, guid: 52f624480f1b1d245bf9dab1cb3e399b, type: 2}
+  WallTiles:
+  - {fileID: 11400000, guid: 8aab25567dff9344185f9b1baab8b862, type: 2}
+  - {fileID: 11400000, guid: 04869019f99ed584eaa5604f9923d7e8, type: 2}
+  - {fileID: 11400000, guid: eb9e8cccedb0f954cb902c0460e0a164, type: 2}
+  - {fileID: 11400000, guid: b5977be816c7e7744b0a6acf2b080ba0, type: 2}
+  - {fileID: 11400000, guid: a262266deec4094468e157c322b85e01, type: 2}
+  - {fileID: 11400000, guid: 290565bee5a88454a93dbd9c7bb3bd98, type: 2}
+  WallTemplate: {fileID: 11400000, guid: b5977be816c7e7744b0a6acf2b080ba0, type: 2}
+  EnemyNums: 020000000400000002000000010000000400000005000000000000000000000000000000
   TimePassed: 0
   MaxTime: 60
+  varient: 0
   goalFound: 0
---- !u!156049354 &1288295108737994511
+--- !u!156049354 &1959290927714481040
 Grid:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,8 +296,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49237a8343a56a6489fa51786dd4621b, type: 2}
-  m_sharedMaterial: {fileID: 8342531239134685622, guid: 49237a8343a56a6489fa51786dd4621b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

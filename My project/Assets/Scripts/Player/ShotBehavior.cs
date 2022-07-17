@@ -22,6 +22,8 @@ public class ShotBehavior : MonoBehaviour
         if(travelDistance.magnitude >= range)
         {
             Destroy(gameObject);
+
+            //this
         }
     }
 

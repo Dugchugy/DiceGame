@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class MapGenerationScript : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class MapGenerationScript : MonoBehaviour
                                                        new Vector3(12, 0, 0),
                                                        new Vector3(0, -10, 0),
                                                        new Vector3(-12, 0, 0)};
+
+    public Tile[] GroundTiles;
+
+    public Tile[] WallTiles;
+
+    public Tile WallTemplate;
 
     public int[] EnemyNums = new int[] {2, 4, 2, 1, 4, 5, 0, 0, 0};
 
@@ -49,7 +56,7 @@ public class MapGenerationScript : MonoBehaviour
 
         EnemyTemplate = Resources.Load<GameObject>("Enemies/Enemy");
 
-        varient = LoadData.RoomType;
+        varient = LoadData.RoomType - 1;
 
         GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
 
@@ -82,6 +89,8 @@ public class MapGenerationScript : MonoBehaviour
                 text.color = new Color(0.9f, 0, 0, 1);
             }
         }
+
+        //debug.Log(GameObject.Find("Room0").Getcomponent<)
     }
 
     /*
@@ -223,7 +232,23 @@ public class MapGenerationScript : MonoBehaviour
         //places the room at the desired position
         rum.transform.position = r.position;
 
-        rum.GetComponent<TileSyncronizer>().varient = varient;
+        Tilemap tilemap = rum.GetComponent<Tilemap>();
+
+        for(int x = tilemap.cellBounds.min.x; x< tilemap.cellBounds.max.x;x++){
+            for(int y= tilemap.cellBounds.min.y; y< tilemap.cellBounds.max.y;y++){
+                Vector3Int tilepos = new Vector3Int(x, y, 0);
+
+                if(tilemap.GetTile(tilepos) == WallTemplate){
+                    tilemap.SetTile(tilepos, WallTiles[varient]);
+                }else if(tilemap.GetTile(tilepos) != null){
+                    tilemap.SetTile(tilepos, GroundTiles[varient]);
+                }
+            }
+        }
+
+        tilemap.animationFrameRate = 0;
+
+        tilemap.RefreshAllTiles();
 
         //sets the room to be a child of the MapOrigin object
         rum.transform.parent = transform;
