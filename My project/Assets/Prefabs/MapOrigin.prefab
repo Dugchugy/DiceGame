@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1288295108737994509}
   - component: {fileID: 1288295108737994510}
-  - component: {fileID: 1288295108737994511}
   m_Layer: 0
   m_Name: MapOrigin
   m_TagString: Untagged
@@ -52,21 +51,11 @@ MonoBehaviour:
   - {x: 12, y: 0, z: 0}
   - {x: 0, y: -10, z: 0}
   - {x: -12, y: 0, z: 0}
+  EnemyNums: 020000000400000002000000010000000400000005000000000000000000000000000000
   TimePassed: 0
   MaxTime: 60
+  varient: 0
   goalFound: 0
---- !u!156049354 &1288295108737994511
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288295108737994508}
-  m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!1 &2975087933865468108
 GameObject:
   m_ObjectHideFlags: 0

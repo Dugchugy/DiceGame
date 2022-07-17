@@ -28,12 +28,20 @@ public class CustomTile : TileBase
 
     public override bool StartUp(Vector3Int location, ITilemap tilemap, GameObject go)
    {
-       if (go != null)
-       {
+       m_AnimationSpeed = LoadData.RoomType;
 
-           Debug.Log("ran");
-           m_AnimationSpeed = go.GetComponent<TileSyncronizer>().varient;
-       }
        return true;
    }
+
+   public override bool GetTileAnimationData(Vector3Int location, ITilemap tileMap, ref TileAnimationData tileAnimationData)
+    {
+        if (m_AnimatedSprite != null && m_AnimatedSprite.Length > 0)
+        {
+            tileAnimationData.animatedSprites = m_AnimatedSprite;
+            tileAnimationData.animationSpeed = m_AnimationSpeed;
+
+            return true;
+        }
+        return false;
+    }
 }
