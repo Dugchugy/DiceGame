@@ -32,6 +32,8 @@ public class LevelScript : MonoBehaviour
         TotalRooms = 0;
 
         Words = GameObject.Find("Error Message").GetComponent<TMP_Text>();
+
+        GameObject.Find("SocreText").GetComponent<TMP_Text>().SetText("Score: " + LoadData.Score);
     }
 
     // Update is called once per frame
