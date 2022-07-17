@@ -18,12 +18,19 @@ public class LevelScript : MonoBehaviour
     public GameObject RoomHolder1;
     public GameObject RoomHolder2;
     public GameObject RoomHolder3;
-    public float ButtonDelay;
+    public float ButtonDelay = 4;
     public TMP_Text Words;
+    private Color ErrorColor;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(LoadData.RoomType == 4){
+            ErrorColor = new Color(1, 1, 0, 1);
+        }else{
+            ErrorColor = new Color(1, 0, 0, 1);
+        }
+
         Variation = 0;
         Goals = 0;
         Rooms1 = 0;
@@ -64,7 +71,7 @@ public class LevelScript : MonoBehaviour
         if(Variation == -1 || Goals == -1 || Rooms1 == -1 || Rooms2 == -1 || Rooms3 == -1)
         {
             ButtonDelay = 0;
-            Words.color = new Color(1, 0, 0, 1);
+            Words.color = ErrorColor;
         }
         else
         {
