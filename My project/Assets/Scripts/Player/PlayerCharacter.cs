@@ -56,18 +56,20 @@ public class PlayerCharacter : MonoBehaviour
 
         float rotateInput = Input.GetAxis("Rotation");
 
+        Vector3 currentVelocity = (transform.up * y) + (transform.right * x);
+
+        Debug.Log(anim.GetBool("Walking"));
+
+        if(currentVelocity.magnitude > 0.1f){
+            anim.SetInteger("Direction X", (int) Mathf.Round(x));
+            anim.SetInteger("Direction Y", (int) Mathf.Round(y));
+
+            anim.SetBool("Walking", true);
+        }else{
+            anim.SetBool("Walking", false);
+        }
+
         if(StunTime <= 0){
-
-            Vector3 currentVelocity = (transform.up * y) + (transform.right * x);
-
-            if(currentVelocity.magnitude > 0.1f){
-                anim.SetInteger("Direction X", (int) Mathf.Round(currentVelocity.x));
-                anim.SetInteger("Direction Y", (int) Mathf.Round(currentVelocity.y));
-
-                anim.SetBool("Walking", true);
-            }else{
-                anim.SetBool("Walking", false);
-            }
 
             playerBody.velocity = ((new Vector2(currentVelocity.x, currentVelocity.y)).normalized * movementSpeed);
             transform.eulerAngles += new Vector3(0, 0, rotateSpeed * rotateInput);
