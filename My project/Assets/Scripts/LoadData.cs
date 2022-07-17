@@ -6,7 +6,7 @@ public static class LoadData
 {
     public static int RoomCount = 3;
     public static int GoalCount = 1;
-    public static int RoomType = 2;
+    public static int RoomType = 3;
 
     public static int Goalsfound = 0;
 
