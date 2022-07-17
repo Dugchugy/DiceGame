@@ -21,6 +21,8 @@ public class MapGenerationScript : MonoBehaviour
 
     public Tile[] WallTiles;
 
+    public Tile WallTemplate;
+
     public int[] EnemyNums = new int[] {2, 4, 2, 1, 4, 5, 0, 0, 0};
 
     public Vector3[][] EnemyPos = new Vector3[9][]{
@@ -54,7 +56,7 @@ public class MapGenerationScript : MonoBehaviour
 
         EnemyTemplate = Resources.Load<GameObject>("Enemies/Enemy");
 
-        varient = LoadData.RoomType;
+        varient = LoadData.RoomType - 1;
 
         GenerateMap(LoadData.RoomCount, LoadData.GoalCount);
 
@@ -234,7 +236,13 @@ public class MapGenerationScript : MonoBehaviour
 
         for(int x = tilemap.cellBounds.min.x; x< tilemap.cellBounds.max.x;x++){
             for(int y= tilemap.cellBounds.min.y; y< tilemap.cellBounds.max.y;y++){
-                tilemap.SetAnimationFrame(new Vector3Int(x, y, 0), varient);
+                Vector3Int tilepos = new Vector3Int(x, y, 0);
+
+                if(tilemap.GetTile(tilepos) == WallTemplate){
+                    tilemap.SetTile(tilepos, WallTiles[varient]);
+                }else{
+                    tilemap.SetTile(tilepos, GroundTiles[varient]);
+                }
             }
         }
 
