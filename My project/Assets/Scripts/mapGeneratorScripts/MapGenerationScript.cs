@@ -223,6 +223,8 @@ public class MapGenerationScript : MonoBehaviour
         //places the room at the desired position
         rum.transform.position = r.position;
 
+        rum.GetComponent<TileSyncronizer>().varient = varient;
+
         //sets the room to be a child of the MapOrigin object
         rum.transform.parent = transform;
 
