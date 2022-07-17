@@ -74,7 +74,7 @@ public class PlayerCharacter : MonoBehaviour
         if(StunTime <= 0){
 
             playerBody.velocity = ((new Vector2(currentVelocity.x, currentVelocity.y)).normalized * movementSpeed);
-            transform.eulerAngles += new Vector3(0, 0, rotateSpeed * rotateInput);
+            //transform.eulerAngles += new Vector3(0, 0, rotateSpeed * rotateInput);
         }else{
             StunTime -= Time.fixedDeltaTime;
         }
