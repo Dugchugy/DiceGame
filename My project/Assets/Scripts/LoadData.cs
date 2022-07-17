@@ -4,9 +4,11 @@ using UnityEngine;
 
 public static class LoadData
 {
-    public static int RoomCount = 18;
-    public static int GoalCount = 6;
-    public static int RoomType = 5;
+    public static int RoomCount = 3;
+    public static int GoalCount = 1;
+    public static int RoomType = 2;
+
+    public static int Goalsfound = 0;
 
     public static int Score = 0;
 }
