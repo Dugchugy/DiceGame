@@ -26,6 +26,8 @@ public class PlayerCharacter : MonoBehaviour
 
     private Animator anim;
 
+    private AudioSource adios;
+
     public float StunTime = 0;
 
 
@@ -38,6 +40,8 @@ public class PlayerCharacter : MonoBehaviour
         playerBody = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
+
+        adios = GetComponent<AudioSource>();
 
         PlayerShot = Resources.Load<GameObject>("Player/PlayerBullets/PlayerShot");
     }
@@ -95,6 +99,7 @@ public class PlayerCharacter : MonoBehaviour
     void OnCollisionEnter2D(Collision2D c){
         if(c.gameObject.tag == "EnemyProjectile"){
             StunTime = 0.25f;
+            adios.Play();
         }
     }
 }
