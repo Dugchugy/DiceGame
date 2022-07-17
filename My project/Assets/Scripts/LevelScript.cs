@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelScript : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class LevelScript : MonoBehaviour
     public GameObject RoomHolder1;
     public GameObject RoomHolder2;
     public GameObject RoomHolder3;
+    public float ButtonDelay;
+    public TMP_Text Words;
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +51,17 @@ public class LevelScript : MonoBehaviour
         Rooms1 = RoomHolder1.GetComponent<HolderScript>().heldNum;
         Rooms2 = RoomHolder2.GetComponent<HolderScript>().heldNum;
         Rooms3 = RoomHolder3.GetComponent<HolderScript>().heldNum;
+        Words = GameObject.Find("Error Message").GetComponent<TMP_Text>();
 
         if(Variation == -1 || Goals == -1 || Rooms1 == -1 || Rooms2 == -1 || Rooms3 == -1)
         {
-            Debug.Log("Holders must be filled!");
+            ButtonDelay = 0;
+            Words.color = new Color(1, 0, 0, 1);
+            while(ButtonDelay < 2)
+            {
+                ButtonDelay += Time.deltaTime;
+            }
+            Words.color = new Color(1, 0, 0, 0);
         }
         else
         {
