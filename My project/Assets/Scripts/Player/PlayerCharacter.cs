@@ -30,6 +30,8 @@ public class PlayerCharacter : MonoBehaviour
 
     public float StunTime = 0;
 
+    public int animSensitivity = 100;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,8 +63,8 @@ public class PlayerCharacter : MonoBehaviour
         Debug.Log(anim.GetBool("Walking"));
 
         if(currentVelocity.magnitude > 0.1f){
-            anim.SetInteger("Direction X", (int) Mathf.Round(x));
-            anim.SetInteger("Direction Y", (int) Mathf.Round(y));
+            anim.SetInteger("Direction X", (int) Mathf.Round(x * animSensitivity));
+            anim.SetInteger("Direction Y", (int) Mathf.Round(y * animSensitivity));
 
             anim.SetBool("Walking", true);
         }else{
