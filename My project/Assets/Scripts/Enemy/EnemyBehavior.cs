@@ -26,6 +26,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private GameObject ProjTemplate;
 
+    public Animator EnemyAnim;
+
 
 
     // Start is called before the first frame update
@@ -36,6 +38,8 @@ public class EnemyBehavior : MonoBehaviour
         PlayerCharacter = GameObject.Find("PlayerCharacter");
 
         ProjTemplate = Resources.Load<GameObject>("Enemies/EnemyProjectile");
+
+        GetComponent<Animator>().SetInteger("Variant", LoadData.RoomType);
     }
 
     // Update is called once per frame
